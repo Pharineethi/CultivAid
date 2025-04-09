@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops and Their Market Prices</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #e0f2ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .header {
+            background-color: #0076CE;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .crop {
+            background-color: #b3d9ff;
+            border-left: 5px solid #0076CE;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .crop-text {
+            flex: 1;
+        }
+        .crop h2 {
+            color: #00509e;
+        }
+        .crop p {
+            font-size: 16px;
+        }
+        .crop img {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+        .crop a {
+            text-decoration: none;
+            color: #00509e;
+            font-weight: bold;
+        }
+        .back-home {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-home a {
+            text-decoration: none;
+            color: #0076CE;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: #e0f2ff;
+            border: 2px solid #0076CE;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Crops and Their Market Prices</div>
+    <div class="container">
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Search..." required>
+            <button type="submit">🔍</button>
+        </form>
+        <h1>Explore Crop Prices and Details</h1>
+        <p>Here you'll find detailed information about various crops and their Market prices across different locations.</p>
+
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Apple</h2>
+                <p><strong>Description:</strong> A popular fruit known for its sweet flavor and high nutritional value.</p>
+                <p><strong>Market Price:</strong> ₹150 per kg</p>
+            </div>
+            <img src="apple.jpg" alt="Apple">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Banana</h2>
+                <p><strong>Description:</strong> A tropical fruit rich in potassium and widely consumed.</p>
+                <p><strong>Market Price:</strong> ₹40 per kg</p>
+            </div>
+            <img src="banana.jpg" alt="Banana">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Barley</h2>
+                <p><strong>Description:</strong> A versatile crop, often used in the brewing industry and as animal fodder.</p>
+                <p><strong>Market Price:</strong> ₹50 per kg</p>
+            </div>
+            <img src="barley.jpg" alt="Barley">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Beans</h2>
+                <p><strong>Description:</strong> Used in various dishes and as a source of protein for vegetarians.</p>
+                <p><strong>Market Price:</strong> ₹70 per kg</p>
+            </div>
+            <img src="beans.jpg" alt="Beans">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Blueberry</h2>
+                <p><strong>Description:</strong> A small, nutrient-packed fruit often used in jams and desserts.</p>
+                <p><strong>Market Price:</strong> ₹500 per kg</p>
+            </div>
+            <img src="blueberry.jpg" alt="Blueberry">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Brinjal</h2>
+                <p><strong>Description:</strong> A versatile vegetable used in various dishes like curries and fried snacks.</p>
+                <p><strong>Market Price:</strong> ₹50 per kg</p>
+            </div>
+            <img src="brinjal.jpg" alt="Brinjal">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Cabbage</h2>
+                <p><strong>Description:</strong> A leafy vegetable used in salads, soups, and stir-fries.</p>
+                <p><strong>Market Price:</strong> ₹55 per kg</p>
+            </div>
+            <img src="cabbage.jpg" alt="Cabbage">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Carrot</h2>
+                <p><strong>Description:</strong> A nutritious root vegetable known for its vibrant orange color and high vitamin content.</p>
+                <p><strong>Market Price:</strong> ₹70 per kg</p>
+            </div>
+            <img src="carrot.jpg" alt="Carrot">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Cauliflower</h2>
+                <p><strong>Description:</strong> A cruciferous vegetable used in curries, soups, and salads.</p>
+                <p><strong>Market Price:</strong> ₹80 per kg</p>
+            </div>
+            <img src="cauliflower.jpg" alt="Cauliflower">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Chili</h2>
+                <p><strong>Description:</strong> A spicy fruit used in various food dishes and as a condiment.</p>
+                <p><strong>Market Price:</strong> ₹150 per kg</p>
+            </div>
+            <img src="chili.jpg" alt="Chili">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Cucumber</h2>
+                <p><strong>Description:</strong> A refreshing vegetable, often used in salads and as a garnish.</p>
+                <p><strong>Market Price:</strong> ₹35 per kg</p>
+            </div>
+            <img src="cucumber.jpg" alt="Cucumber">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Garlic</h2>
+                <p><strong>Description:</strong> A pungent vegetable used for flavoring and medicinal purposes.</p>
+                <p><strong>Market Price:</strong> ₹120 per kg</p>
+            </div>
+            <img src="garlic.jpg" alt="Garlic">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Grapes</h2>
+                <p><strong>Description:</strong> A sweet fruit that can be eaten fresh or made into wine.</p>
+                <p><strong>Market Price:</strong> ₹120 per kg</p>
+            </div>
+            <img src="grapes.jpg" alt="Grapes">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Groundnut</h2>
+                <p><strong>Description:</strong> Commonly known as peanuts, used for oil extraction and as food.</p>
+                <p><strong>Market Price:</strong> ₹80 per kg</p>
+            </div>
+            <img src="groundnut.jpg" alt="Groundnut">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Mango</h2>
+                <p><strong>Description:</strong> Known as the "king of fruits," mangoes are rich in vitamins and enjoyed worldwide.</p>
+                <p><strong>Market Price:</strong> ₹90 per kg</p>
+            </div>
+            <img src="mango.jpg" alt="Mango">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Maize</h2>
+                <p><strong>Description:</strong> A widely cultivated crop used for food, fodder, and industrial products.</p>
+                <p><strong>Market Price:</strong> ₹40 per kg</p>
+            </div>
+            <img src="maize.jpg" alt="Maize">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Mustard</h2>
+                <p><strong>Description:</strong> An oilseed crop used for oil production and as a spice.</p>
+                <p><strong>Market Price:</strong> ₹90 per kg</p>
+            </div>
+            <img src="mustard.jpg" alt="Mustard">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Oats</h2>
+                <p><strong>Description:</strong> A nutritious cereal grain that is widely used in breakfast foods and snacks.</p>
+                <p><strong>Market Price:</strong> ₹55 per kg</p>
+            </div>
+            <img src="oats.jpg" alt="Oats">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Onion</h2>
+                <p><strong>Description:</strong> A widely used vegetable known for its distinct flavor and aroma.</p>
+                <p><strong>Market Price:</strong> ₹50 per kg</p>
+            </div>
+            <img src="onion.jpg" alt="Onion">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Pea</h2>
+                <p><strong>Description:</strong> A legume used in soups, curries, and as a snack.</p>
+                <p><strong>Market Price:</strong> ₹60 per kg</p>
+            </div>
+            <img src="pea.jpg" alt="Pea">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Pineapple</h2>
+                <p><strong>Description:</strong> A tropical fruit with a sweet and tangy flavor, often used in desserts and salads.</p>
+                <p><strong>Market Price:</strong> ₹100 per kg</p>
+            </div>
+            <img src="pineapple.jpg" alt="Pineapple">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Potato</h2>
+                <p><strong>Description:</strong> A widely consumed root vegetable used in various cuisines.</p>
+                <p><strong>Market Price:</strong> ₹45 per kg</p>
+            </div>
+            <img src="potato.jpg" alt="Potato">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Ragi (Finger Millet)</h2>
+                <p><strong>Description:</strong> A highly nutritious crop that is a good source of calcium and iron.</p>
+                <p><strong>Market Price:</strong> ₹60 per kg</p>
+            </div>
+            <img src="ragi.jpg" alt="Ragi">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Rice</h2>
+                <p><strong>Description:</strong> A key food crop that serves as a major staple food source for a large population.</p>
+                <p><strong>Market Price:</strong> ₹35 per kg</p>
+            </div>
+            <img src="rice.jpg" alt="Rice">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Sorghum</h2>
+                <p><strong>Description:</strong> A drought-tolerant crop used for food, fodder, and biofuel production.</p>
+                <p><strong>Market Price:</strong> ₹45 per kg</p>
+            </div>
+            <img src="sorghum.jpg" alt="Sorghum">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Spinach</h2>
+                <p><strong>Description:</strong> A leafy green vegetable that is rich in iron and vitamins.</p>
+                <p><strong>Market Price:</strong> ₹40 per kg</p>
+            </div>
+            <img src="spinach.jpg" alt="Spinach">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Strawberry</h2>
+                <p><strong>Description:</strong> A sweet and juicy berry often used in desserts and smoothies.</p>
+                <p><strong>Market Price:</strong> ₹300 per kg</p>
+            </div>
+            <img src="strawberry.jpg" alt="Strawberry">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Sweet Potato</h2>
+                <p><strong>Description:</strong> A nutritious root vegetable that can be roasted, boiled, or made into fries.</p>
+                <p><strong>Market Price:</strong> ₹90 per kg</p>
+            </div>
+            <img src="sweet_potato.jpg" alt="Sweet Potato">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Tomato</h2>
+                <p><strong>Description:</strong> A popular vegetable used in many culinary dishes and processed into sauces and pastes.</p>
+                <p><strong>Market Price:</strong> ₹60 per kg</p>
+            </div>
+            <img src="tomato.jpg" alt="Tomato">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Watermelon</h2>
+                <p><strong>Description:</strong> A hydrating fruit commonly enjoyed in summer.</p>
+                <p><strong>Market Price:</strong> ₹25 per kg</p>
+            </div>
+            <img src="watermelon.jpg" alt="Watermelon">
+        </div>
+        <div class="crop">
+            <div class="crop-text">
+                <h2>Wheat</h2>
+                <p><strong>Description:</strong> A staple food crop widely grown across the globe, mainly used for bread and flour production.</p>
+                <p><strong>Market Price:</strong> ₹28 per kg</p>
+            </div>
+            <img src="wheat.jpg" alt="Wheat">
+        </div>
+
+        <div class="back-home">
+            <a href="index.html">Back to Home</a>
+        </div>
+    </div>
+    <script>
+        function searchCrops() {
+            const query = document.querySelector('input[name="query"]').value.toLowerCase();
+            const crops = document.querySelectorAll('.crop');
+
+            crops.forEach(crop => {
+                const cropName = crop.querySelector('h2').textContent.toLowerCase();
+                if (cropName.startsWith(query)) { // Change to startsWith
+                    crop.style.display = 'flex'; // Show the crop
+                } else {
+                    crop.style.display = 'none'; // Hide the crop
+                }
+            });
+        }
+
+        document.querySelector('input[name="query"]').addEventListener('input', searchCrops);
+    </script>
+</body>
+</html>

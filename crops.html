@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CultivAid - Crop Suggestions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+    :root {
+      --primary-blue: #1a73e8;
+      --primary-light: #e8f0fe;
+      --secondary-blue: #4285f4;
+      --accent-blue: #8ab4f8;
+      --dark-blue: #0d47a1;
+      --text-dark: #202124;
+      --text-light: #5f6368;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      color: var(--text-dark);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: var(--primary-blue);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .filter-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      background: #e0e0e0;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .filter-btn.active {
+      background: var(--primary-blue);
+      color: white;
+    }
+    
+    .crop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .crop-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .crop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .crop-icon {
+      background: var(--primary-light);
+      text-align: center;
+      padding: 15px;
+      font-size: 2rem;
+      color: var(--primary-blue);
+    }
+    
+    .crop-info {
+      padding: 15px;
+    }
+    
+    .crop-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      color: var(--primary-blue);
+    }
+    
+    .crop-season {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .kharif {
+      background: #e3f2fd;
+      color: var(--dark-blue);
+    }
+    
+    .rabi {
+      background: #bbdefb;
+      color: #0d47a1;
+    }
+    
+    .crop-detail {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .crop-detail i {
+      width: 20px;
+      color: var(--secondary-blue);
+    }
+    .back-home {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .back-home a {
+    text-decoration: none;
+    color: #0076CE;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #e0f2ff;
+    border: 2px solid #0076CE;
+    border-radius: 5px;
+  }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .crop-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-leaf" style="color: var(--primary-blue);"></i> Crop Suggestions</h1>
+    
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterCrops('all')">All Crops</button>
+      <button class="filter-btn" onclick="filterCrops('kharif')">Kharif</button>
+      <button class="filter-btn" onclick="filterCrops('rabi')">Rabi</button>
+    </div>
+    
+    <div class="crop-grid" id="cropContainer">
+      <!-- Crops will be inserted here by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // ==== Crop Data ====
+    const crops = [
+      {
+        name: "Rice",
+        season: "kharif",
+        icon: "fa-bowl-rice",
+        soil: "Clay/Loam",
+        water: "High",
+        duration: "90-120 days"
+      },
+      {
+        name: "Wheat",
+        season: "rabi",
+        icon: "fa-wheat-awn",
+        soil: "Loam",
+        water: "Moderate",
+        duration: "110-130 days"
+      },
+      {
+        name: "Maize",
+        season: "kharif",
+        icon: "fa-jar",
+        soil: "Well-drained Loam",
+        water: "Moderate",
+        duration: "80-100 days"
+      },
+      {
+        name: "Cotton",
+        season: "kharif",
+        icon: "fa-shirt",
+        soil: "Black Soil",
+        water: "Low-Moderate",
+        duration: "150-170 days"
+      },
+      {
+        name: "Mustard",
+        season: "rabi",
+        icon: "fa-seedling",
+        soil: "Sandy Loam",
+        water: "Low",
+        duration: "90-110 days"
+      },
+      {
+        name: "Barley",
+        season: "rabi",
+        icon: "fa-beer-mug-empty",
+        soil: "Loam/Sandy",
+        water: "Low",
+        duration: "100-120 days"
+      }
+    ];
+
+    // ==== Render Crops ====
+    function renderCrops(filter = "all") {
+      const container = document.getElementById("cropContainer");
+      container.innerHTML = "";
+      
+      const filteredCrops = filter === "all" 
+        ? crops 
+        : crops.filter(crop => crop.season === filter);
+      
+      filteredCrops.forEach(crop => {
+        container.innerHTML += `
+          <div class="crop-card" data-season="${crop.season}">
+            <div class="crop-icon">
+              <i class="fas ${crop.icon}"></i>
+            </div>
+            <div class="crop-info">
+              <h3 class="crop-name">${crop.name}</h3>
+              <span class="crop-season ${crop.season}">
+                ${crop.season === "kharif" ? "Kharif (Jun-Sept)" : "Rabi (Oct-Mar)"}
+              </span>
+              <p class="crop-detail"><i class="fas fa-tractor"></i> Soil: ${crop.soil}</p>
+              <p class="crop-detail"><i class="fas fa-droplet"></i> Water: ${crop.water}</p>
+              <p class="crop-detail"><i class="fas fa-calendar-days"></i> Duration: ${crop.duration}</p>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // ==== Filter Function ====
+    function filterCrops(season) {
+      // Update active button
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.textContent.toLowerCase().includes(season)) btn.classList.add("active");
+      });
+      
+      // Render filtered crops
+      renderCrops(season);
+    }
+
+    // Initialize
+    renderCrops();
+  </script>
+  <div class="back-home">
+    <a href="index.html">Back to Home</a>
+  </div>
+</body>
+</html>

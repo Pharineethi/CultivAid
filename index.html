@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultivAid</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #e3f2fd;
+            color: #04395e;
+        }
+        .top-right-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .top-right-link a {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .top-right-link a:hover {
+            background-color: #0056b3;
+        }
+        header {
+            background: #64b5f6;
+            color: #ffffff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background: #01579b;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            background: #0288d1;
+            border-radius: 5px;
+        }
+        .card {
+            width: 300px;
+            height: 200px;
+            margin: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        .card span {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background: #bbdefb;
+        }
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+        .hero button {
+            background: #0288d1;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+        .hero button:hover {
+            background: #0277bd;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2rem;
+        }
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #90caf9;
+            border-radius: 8px;
+            margin: 1rem;
+            padding: 1rem;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .feature-card img {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+        .live-updates {
+            background: #e1f5fe;
+            padding: 2rem;
+            text-align: center;
+        }
+        .live-updates marquee {
+            color: #01579b;
+            font-weight: bold;
+        }
+        .community {
+            text-align: center;
+            padding: 2rem;
+        }
+        .tutorial {
+            text-align: center;
+            padding: 2rem;
+            background: #bbdefb;
+        }
+        .tutorial a {
+            color: #0288d1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .tutorial a:hover {
+            color: #01579b;
+        }
+        .tip-of-the-day {
+            background: #64b5f6;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        footer {
+            background: #01579b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CultivAid</h1>
+        <p>Empowering Farmers for a Brighter Future!</p>
+    </header>
+    <div class="top-right-link">
+        <a href="project2.html"> Click here to Log In / Create Account</a>
+    </div>
+
+    <section class="hero">
+        <h1>Welcome to CultivAid - one stop solution for all your agricultural problems</h1>
+        <p>Access information and tools here</p>
+        <a href  = "cropMarketPrices.html"><button>Market Prices</button></a>
+        <a href  = "newsupdate.html"><button>News</button></a>
+        
+    </section>
+
+
+        <section class="live-updates">
+            <marquee><h4 id="liveWeatherMarquee">Loading weather data...</h4></marquee>
+        </section>
+        
+        <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiKey = 'c6d9a9d807e2c130c5a5d9816cbffb61'; 
+            const farmLocation = { lat: 10.7984, lon: 76.9849 }; // Ettimadai farm coordinates
+            
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${farmLocation.lat}&lon=${farmLocation.lon}&appid=${apiKey}&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherText = `Today's Weather: ${data.weather[0].description}, ${data.main.temp}°C | News: India exported 19.86M tonnes rice till Mar 25 of FY25: Govt tells RS`;
+                    document.getElementById('liveWeatherMarquee').textContent = weatherText;
+                })
+                .catch(error => {
+                    console.error('Error fetching weather:', error);
+                    document.getElementById('liveWeatherMarquee').textContent = 
+                        "Today's Weather: Data unavailable || News: India exported 19.86M tonnes rice till Mar 25 of FY25: Govt tells RS";
+                });
+        });
+        </script>
+    
+    <section class="features">
+
+        <a href="govschemesfinal.html" class="card" style="background-image: url(https://timesofagriculture.in/wp-content/uploads/2023/08/c3ac2bfa-d9d4-11eb-a5ce-a68058c7c394_1625079441804-1024x576.webp);">
+            <span>Government Schemes<br>Learn about support programs and how to register.</span>
+        </a>
+        <a href="crops.html" class="card" style="background-image: url(https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638892233/EducationHub/photos/crops-growing-in-thailand.jpg);">
+            <span>Crop Suggestions<br>Plan your crops based on seasonal advice.</span>
+        </a>
+        <a href="weather.html" class="card" style="background-image: url(https://wmo.int/sites/default/files/styles/featured_image_x1_768x512/public/2023-12/thumbnails_5.jpg?h=d1cb525d&itok=aZ4qUGTc);">
+            <span>Weather Forecasting<br>Stay updated with accurate weather forecasts.</span>
+        </a>
+        
+    </section>
+
+    <section class="tutorial">
+        <h2>How to Use This Platform</h2>
+        <p><a href="https://youtu.be/iAlTg08loG4?si=0_3ntkYqMG97mj7g" target="_self"><u>Click here for a short guide.</u></a></p>
+    </section>
+
+
+    <section class="tip-of-the-day">
+        <h2>Tip of the Day</h2>
+        <p>Did you know? Using organic compost can increase your crop yield by up to 20% while improving soil health!</p>
+    </section>
+    <footer>
+        <p> &copy; 2025 CultivAid. All rights reserved.</p>
+    </footer>
+</body>
+</html>

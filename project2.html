@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultivAid - Login</title>
+    <!-- /*<style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #003366, #4a90e2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+            color: #003366;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #4a90e2;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #003366;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background-color: #003366;
+        }
+    </style>  -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Rubik', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #003366, #4a90e2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 420px;
+            padding: 30px;
+            text-align: center;
+            color: #003366;
+            margin: 20px 0;
+        }
+
+        h1 {
+            color: #003366;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #003366;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #4a90e2;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333333;
+            font-family: 'Rubik', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #003366;
+            box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'Rubik', sans-serif;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .button:hover {
+            background-color: #003366;
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link {
+            color: #003366;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+            color: #4a90e2;
+        }
+
+        .divider {
+            margin: 20px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+
+    <script>
+        let generatedOTP = "";
+
+        function validateLogin() {
+            let aadhar = document.getElementById("aadhar").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let otp = document.getElementById("otp").value.trim();
+
+            if (!/^\d{12}$/.test(aadhar)) {
+                alert("❌ Aadhar Number must be exactly 12 digits!");
+                return false;
+            }
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("❌ Mobile Number must be exactly 10 digits!");
+                return false;
+            }
+            if (otp !== generatedOTP) {
+                alert("❌ Invalid OTP! Please enter the correct OTP.");
+                return false;
+            }
+
+            alert("✅ Login Successful!");
+            return true;
+        }
+
+        function getOTP() {
+            let mobile = document.getElementById("mobile").value.trim();
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("❌ Please enter a valid 10-digit mobile number before requesting OTP!");
+                return;
+            }
+            
+            generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            alert(`📩 OTP Sent: ${generatedOTP}`); // Simulating OTP sent
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>CultivAid</h1>
+        <form onsubmit="return validateLogin()">
+            <div class="form-group">
+                <label for="aadhar">Aadhar Number</label>
+                <input type="text" id="aadhar" name="aadhar" placeholder="Enter your 12-digit Aadhar Number" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter your 10-digit Mobile Number" required>
+            </div>
+            <div class="form-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+                <button type="button" class="button" onclick="getOTP()">Get OTP</button>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="button">Log In</button>
+            </div>
+        </form>
+        <hr>
+        <button onclick="window.location.href='index.html'" class="button"> Back to Home</button>
+        <p>Don't have an account? <a href="sign-up1.html" class="link">Sign Up</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "cultivaid",
+    "version": "1.0.0",
+    "description": "A farmer support platform with live updates and community features.",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "dev": ""
+    },
+    "keywords": ["farming", "agriculture", "community", "market prices"],
+    "author": "CultivAid",
+    "license": "MIT",
+    "devDependencies": {
+      "electron": "^28.1.0"
+    }
+  }
+  

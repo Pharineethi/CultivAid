@@ -1,0 +1,13 @@
+.back-home {
+    text-align: center;
+    margin-top: 30px;
+}
+.back-home a {
+    text-decoration: none;
+    color: #0076CE;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #e0f2ff;
+    border: 2px solid #0076CE;
+    border-radius: 5px;
+}
